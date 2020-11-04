@@ -6,9 +6,18 @@ import javax.swing.*;
 
 public class ApplicationView {
   private JFrame window;
+  private JPanel sidePanel;
+  private JPanel mainPanel;
   private String user = "Branch";
 
   public ApplicationView(){
+    //General Frame Construction
+    window = new JFrame("KPI Manager");
+    window.setMinimumSize(new Dimension(1280, 720));
+    window.setResizable(false);
+    window.setVisible(true);
+
+    //Create First Page
     makeDashboard();
   }
 
@@ -41,19 +50,20 @@ public class ApplicationView {
   }
 
   public void makeDashboard(){
-    //General Frame Construction
-    window = new JFrame("KPI Manager");
-    window.setSize(1280, 720);
-    window.setResizable(false);
-    window.setVisible(true);
     JLabel userSelected = new JLabel(user);
-    window.add(userSelected);
+    //window.add(userSelected);
 
     //Getting Panels
+    sidePanel = new SidePanel(new Dimension(1280/6, 720), this);
+    mainPanel = new DashboardPanel(new Dimension((1280*5)/6, 720), this);
+    window.add(sidePanel);
+    window.add(mainPanel);
 
     //Application 
     
     //User interaction
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    window.pack();
   }
 }

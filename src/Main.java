@@ -9,7 +9,7 @@ public class Main {
   public static void main(String[] args){
     /*SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
     System.out.println(dateFormat.format(new Date()));
-    LoadFile.loadYear("assets/"+dateFormat.format(new Date())+".txt");*/
+    FileManager.loadYear("assets/"+dateFormat.format(new Date())+".txt");*/
 
     Main instance = new Main();
     instance.setup();
