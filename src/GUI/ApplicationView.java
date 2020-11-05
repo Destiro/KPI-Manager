@@ -9,6 +9,8 @@ public class ApplicationView {
   private JPanel sidePanel;
   private JPanel mainPanel;
   private String user = "Branch";
+  public HashMap<String, User> users;
+  private int page = 0;
 
   public ApplicationView(){
     //General Frame Construction
@@ -22,6 +24,13 @@ public class ApplicationView {
   }
 
   public void changePage(int newPage){
+    //If Page selected is already chosen
+    if(page == newPage) {
+      return;
+    }
+
+    //New page selected, Recreate GUI
+    page = newPage;
     if(newPage == 0){
       makeDashboard();
     }else if(newPage == 1){
