@@ -1,6 +1,9 @@
 package GUI;
 
+import Main.User;
+
 import java.awt.*;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -10,12 +13,12 @@ public class ApplicationView {
   private JPanel mainPanel;
   private String user = "Branch";
   public HashMap<String, User> users;
-  private int page = 0;
+  private String page = "DASHBOARD";
 
   public ApplicationView(){
     //General Frame Construction
     window = new JFrame("KPI Manager");
-    window.setMinimumSize(new Dimension(1280, 720));
+    window.setPreferredSize(new Dimension(1280, 720));
     window.setResizable(false);
     window.setVisible(true);
 
@@ -23,23 +26,23 @@ public class ApplicationView {
     makeDashboard();
   }
 
-  public void changePage(int newPage){
+  public void changePage(String newPage){
     //If Page selected is already chosen
-    if(page == newPage) {
+    if(page.equals(newPage)){
       return;
     }
 
     //New page selected, Recreate GUI
     page = newPage;
-    if(newPage == 0){
+    if(newPage.equals("DASHBOARD")){
       makeDashboard();
-    }else if(newPage == 1){
+    }else if(newPage.equals("EXPORT")){
       makeExport();
-    }else if(newPage == 2){
+    }else if(newPage.equals("INPUT")){
       makeInput();
-    }else if(newPage == 3){
+    }else if(newPage.equals("SETTINGS")){
       makeSettings();
-    }else if(newPage == 4){
+    }else if(newPage.equals("HELP")){
       makeHelp();
     }else{
       window.dispose();
@@ -59,8 +62,6 @@ public class ApplicationView {
   }
 
   public void makeDashboard(){
-    JLabel userSelected = new JLabel(user);
-    //window.add(userSelected);
 
     //Getting Panels
     sidePanel = new SidePanel(new Dimension(1280/6, 720), this);
@@ -70,9 +71,13 @@ public class ApplicationView {
 
     //Application 
     
-    //User interaction
+    //Main.User interaction
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     window.pack();
+  }
+
+  public String getUser(){
+    return user;
   }
 }

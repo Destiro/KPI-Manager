@@ -3,6 +3,7 @@ package GUI;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 /**
  * JPanel on the left side of the GUI,
@@ -17,8 +18,8 @@ public class SidePanel extends JPanel {
     this.gui = gui;
 
     this.setSize(size);
-    //this.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
-    this.setLayout(new GridLayout(0,1));
+    this.setBorder(new EmptyBorder(20,15,100, 15));
+    this.setLayout(new GridLayout(6,1,0,10));
     this.setVisible(true);
     this.setBackground(Color.LIGHT_GRAY);
 
@@ -28,7 +29,9 @@ public class SidePanel extends JPanel {
 
   public void addButtons(){
     for(buttons b : buttons.values()){
-      this.add(new JButton(b.toString()));
+      JButton newButton = new JButton(b.toString());
+      newButton.addActionListener(actionEvent -> gui.changePage(b.toString()));
+      this.add(newButton);
     }
   }
 }
