@@ -17,7 +17,7 @@ public class SidePanel extends JPanel {
   public SidePanel(Dimension size, ApplicationView gui){
     this.gui = gui;
 
-    this.setSize(size);
+    this.setBounds(0, 0, size.width, size.height);
     this.setBorder(new EmptyBorder(20,15,100, 15));
     this.setLayout(new GridLayout(6,1,0,10));
     this.setVisible(true);

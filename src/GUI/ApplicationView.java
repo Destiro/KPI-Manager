@@ -18,9 +18,11 @@ public class ApplicationView {
   public ApplicationView(){
     //General Frame Construction
     window = new JFrame("KPI Manager");
-    window.setPreferredSize(new Dimension(1280, 720));
+    window.setSize(1280, 720);
     window.setResizable(false);
     window.setVisible(true);
+    window.setLayout(null);
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     //Create First Page
     makeDashboard();
@@ -72,9 +74,8 @@ public class ApplicationView {
     //Application 
     
     //Main.User interaction
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    window.pack();
+    //window.pack();
+    window.revalidate();
   }
 
   public String getUser(){
