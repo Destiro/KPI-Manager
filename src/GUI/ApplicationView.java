@@ -76,6 +76,7 @@ public class ApplicationView {
     //Main.User interaction
     //window.pack();
     window.revalidate();
+    window.repaint();
   }
 
   public String getUser(){
