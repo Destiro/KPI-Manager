@@ -83,8 +83,6 @@ public class ApplicationView {
   }
 
   public void makeDashboard(){
-    System.out.println("Im in dashboard");
-    //Create Panel
     mainPanel = new DashboardPanel(new Dimension((1280*5)/6, 720), this);
     window.add(mainPanel);
   }
