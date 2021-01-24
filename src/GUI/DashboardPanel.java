@@ -9,20 +9,16 @@ public class DashboardPanel extends JPanel {
   private GridBagConstraints constraints = new GridBagConstraints();
   public DashboardPanel(Dimension size, ApplicationView gui){
     //JPanel setup
-    this.setBounds(1280/6, 0, size.width, size.height);
-    System.out.println(size.width);
-    System.out.println(size.height);
+    this.setBounds((1280/6), 0, size.width, size.height);
     this.setBackground(Color.YELLOW);
     this.setLayout(new GridBagLayout());
 
     //Grid Constraints setup
-    constraints.insets = new Insets(5, 5, 5, 5);
+    constraints.insets = new Insets(5, 0, 0, 5);
     constraints.anchor = GridBagConstraints.FIRST_LINE_START;
     constraints.weightx = 1;
     constraints.weighty = 1;
-    //constraints.gridheight = 5;
-    constraints.gridwidth = 2;
-    //constraints.fill = GridBagConstraints.HORIZONTAL;
+    constraints.fill = GridBagConstraints.HORIZONTAL;
 
     //Variables set
     this.gui = gui;
@@ -33,14 +29,25 @@ public class DashboardPanel extends JPanel {
     //Creating Label
     JLabel userSelected = new JLabel("  "+gui.getUser());
     userSelected.setFont(userSelected.getFont().deriveFont(24.0f));
-    userSelected.setHorizontalAlignment(JLabel.LEFT);
-    userSelected.setVerticalAlignment(JLabel.TOP);
-
-    //Creating Constraints and adding element
-    constraints.fill = GridBagConstraints.HORIZONTAL;
     constraints.gridx = 0;
     constraints.gridy = 0;
     this.add(userSelected, constraints);
+
+    //Creating Timeframe Dropdown
+    String month[] = {"January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"};
+    JComboBox timeFrame = new JComboBox(month);
+    constraints.gridx = 2;
+    this.add(timeFrame, constraints);
+
+    //Creating User Dropdown
+    String users[] = {"Branch", "Joe", "Bill", "Jessica"};
+    JComboBox userSelect = new JComboBox(users);
+    constraints.gridx = 3;
+    this.add(userSelect, constraints);
+
+    //Creating Constraints and adding element
+
 
     //Creating User Selection
     //todo create user selection
@@ -80,7 +87,6 @@ public class DashboardPanel extends JPanel {
     JPanel meter = new JPanel();
     meter.setPreferredSize(size);
     meter.setBackground(Color.RED);
-    meter.setVisible(true);
 
     //Setup Graph
     JLabel meterName = new JLabel(name);
@@ -89,12 +95,7 @@ public class DashboardPanel extends JPanel {
     //todo create graph
 
     //Constraints and adding element
-    constraints.fill = GridBagConstraints.HORIZONTAL;
-    constraints.gridx = x;
-    constraints.gridy = y;
-    constraints.gridwidth = 1;
-    constraints.gridheight = 1;
-    this.add(meter, constraints);
+    addElement(meter, x, y, 1, 1);
   }
 
   public void setupBarGraph(int x, int y, Dimension size, String name, Double current, Double max){
@@ -102,7 +103,6 @@ public class DashboardPanel extends JPanel {
     JPanel barGraph = new JPanel();
     barGraph.setPreferredSize(size);
     barGraph.setBackground(Color.BLUE);
-    barGraph.setVisible(true);
 
     //Setup Graph
     JLabel meterName = new JLabel(name);
@@ -111,12 +111,7 @@ public class DashboardPanel extends JPanel {
     //todo create graph
 
     //Constraints and adding element
-    constraints.fill = GridBagConstraints.HORIZONTAL;
-    constraints.gridx = x;
-    constraints.gridy = y;
-    constraints.gridwidth = 2;
-    constraints.gridheight = 1;
-    this.add(barGraph, constraints);
+    addElement(barGraph, x, y, 2, 1);
   }
 
   public void setupLineGraph(int x, int y, Dimension size, String name, Double current, Double max){
@@ -124,7 +119,6 @@ public class DashboardPanel extends JPanel {
     JPanel lineGraph = new JPanel();
     lineGraph.setPreferredSize(size);
     lineGraph.setBackground(Color.GREEN);
-    lineGraph.setVisible(true);
 
     //Setup Graph
     JLabel meterName = new JLabel(name);
@@ -133,11 +127,23 @@ public class DashboardPanel extends JPanel {
     //todo create graph
 
     //Constraints and adding element
-    constraints.fill = GridBagConstraints.HORIZONTAL;
-    constraints.gridx = x;
-    constraints.gridy = y;
-    constraints.gridwidth = 4;
-    constraints.gridheight = 1;
-    this.add(lineGraph, constraints);
+    addElement(lineGraph, x, y, 4, 1);
+  }
+
+  /**
+   * Helper method to add element and constraints to dashboard.
+   *
+   * @param element
+   * @param gridX
+   * @param gridY
+   * @param gridWidth
+   * @param gridHeight
+   */
+  public void addElement(JPanel element, int gridX, int gridY, int gridWidth, int gridHeight){
+    constraints.gridx = gridX;
+    constraints.gridy = gridY;
+    constraints.gridwidth = gridWidth;
+    constraints.gridheight = gridHeight;
+    this.add(element, constraints);
   }
 }
