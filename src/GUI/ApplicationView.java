@@ -25,7 +25,13 @@ public class ApplicationView {
     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     //Create First Page
+    sidePanel = new SidePanel(new Dimension(1280/6, 720), this);
+    window.add(sidePanel);
     makeDashboard();
+
+    //Draw Panel
+    window.revalidate();
+    window.repaint();
   }
 
   public void changePage(String newPage){
@@ -36,6 +42,7 @@ public class ApplicationView {
 
     //New page selected, Recreate GUI
     page = newPage;
+    window.remove(mainPanel);
     if(newPage.equals("DASHBOARD")){
       makeDashboard();
     }else if(newPage.equals("EXPORT")){
@@ -49,34 +56,37 @@ public class ApplicationView {
     }else{
       window.dispose();
     }
+
+    //Draw Panel
+    window.revalidate();
+    window.repaint();
   }
 
   private void makeHelp() {
+    mainPanel = new HelpPanel(new Dimension((1280*5)/6, 720), this);
+    window.add(mainPanel);
   }
 
   private void makeSettings() {
+    mainPanel = new SettingsPanel(new Dimension((1280*5)/6, 720), this);
+    window.add(mainPanel);
   }
 
   private void makeInput() {
+    mainPanel = new InputPanel(new Dimension((1280*5)/6, 720), this);
+    window.add(mainPanel);
   }
 
   private void makeExport() {
+    mainPanel = new ExportPanel(new Dimension((1280*5)/6, 720), this);
+    window.add(mainPanel);
   }
 
   public void makeDashboard(){
-
-    //Getting Panels
-    sidePanel = new SidePanel(new Dimension(1280/6, 720), this);
+    System.out.println("Im in dashboard");
+    //Create Panel
     mainPanel = new DashboardPanel(new Dimension((1280*5)/6, 720), this);
-    window.add(sidePanel);
     window.add(mainPanel);
-
-    //Application 
-    
-    //Main.User interaction
-    //window.pack();
-    window.revalidate();
-    window.repaint();
   }
 
   public String getUser(){
