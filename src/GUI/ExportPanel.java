@@ -63,7 +63,7 @@ public class ExportPanel extends JPanel {
     timeFrame.setPreferredSize(new Dimension(size.width/4, size.height/16));
     timeFrame.setPrototypeDisplayValue("Select Month");
     innerPanel.add(timeFrame);
-    innerPanel.add(Box.createRigidArea(new Dimension(0, 100))); //Padding
+    innerPanel.add(Box.createRigidArea(new Dimension(0, 80))); //Padding
 
     //Creating export button
     JButton exportButton = new JButton("Export");
