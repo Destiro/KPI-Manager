@@ -7,10 +7,12 @@ import javax.swing.*;
 public class DashboardPanel extends JPanel {
   private ApplicationView gui;
   private GridBagConstraints constraints = new GridBagConstraints();
+  private Color backgroundColor = new Color(215,215,215);
+
   public DashboardPanel(Dimension size, ApplicationView gui){
     //JPanel setup
     this.setBounds((1280/6), 0, size.width, size.height);
-    this.setBackground(Color.YELLOW);
+    this.setBackground(backgroundColor);
     this.setLayout(new GridBagLayout());
 
     //Grid Constraints setup
@@ -86,7 +88,7 @@ public class DashboardPanel extends JPanel {
     //Setup panel
     JPanel meter = new JPanel();
     meter.setPreferredSize(size);
-    meter.setBackground(Color.RED);
+    meter.setBackground(Color.WHITE);
 
     //Setup Graph
     JLabel meterName = new JLabel(name);
@@ -102,7 +104,7 @@ public class DashboardPanel extends JPanel {
     //Setup panel
     JPanel barGraph = new JPanel();
     barGraph.setPreferredSize(size);
-    barGraph.setBackground(Color.BLUE);
+    barGraph.setBackground(Color.WHITE);
 
     //Setup Graph
     JLabel meterName = new JLabel(name);
@@ -118,7 +120,7 @@ public class DashboardPanel extends JPanel {
     //Setup panel
     JPanel lineGraph = new JPanel();
     lineGraph.setPreferredSize(size);
-    lineGraph.setBackground(Color.GREEN);
+    lineGraph.setBackground(Color.WHITE);
 
     //Setup Graph
     JLabel meterName = new JLabel(name);
