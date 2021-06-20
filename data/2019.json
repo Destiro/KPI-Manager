@@ -1,0 +1,126 @@
+{
+  "January": {
+    "1": [
+      {
+        "user": "Joe Smith",
+        "attended": 1.0,
+        "worked": 1.0,
+        "invoiced": 1.0,
+        "uninvoiced": 1.0,
+        "idle_prod": 1.0,
+        "idle_unprod": 1.0,
+        "count": 1.0,
+        "taken": 1.0,
+        "sold": 1.0,
+        "wip_open": 1.0,
+        "wip_close": 1.0
+      },
+      {
+        "user": "Michael Jackson",
+        "attended": 2.0,
+        "worked": 2.0,
+        "invoiced": 2.0,
+        "uninvoiced": 2.0,
+        "idle_prod": 2.0,
+        "idle_unprod": 2.0,
+        "count": 2.0,
+        "taken": 2.0,
+        "sold": 2.0,
+        "wip_open": 2.0,
+        "wip_close": 2.0
+      }
+    ],
+    "2": [
+      {
+        "user": "Joe Smith",
+        "attended": 3.0,
+        "worked": 3.0,
+        "invoiced": 3.0,
+        "uninvoiced": 3.0,
+        "idle_prod": 3.0,
+        "idle_unprod": 3.0,
+        "count": 3.0,
+        "taken": 3.0,
+        "sold": 3.0,
+        "wip_open": 3.0,
+        "wip_close": 3.0
+      },
+      {
+        "user": "Michael Jackson",
+        "attended": 4.0,
+        "worked": 4.0,
+        "invoiced": 4.0,
+        "uninvoiced": 4.0,
+        "idle_prod": 4.0,
+        "idle_unprod": 4.0,
+        "count": 4.0,
+        "taken": 4.0,
+        "sold": 4.0,
+        "wip_open": 4.0,
+        "wip_close": 4.0
+      }
+    ]
+  },
+  "February": {
+    "1": [
+      {
+        "user": "Joe Smith",
+        "attended": 3.0,
+        "worked": 3.0,
+        "invoiced": 3.0,
+        "uninvoiced": 3.0,
+        "idle_prod": 3.0,
+        "idle_unprod": 3.0,
+        "count": 3.0,
+        "taken": 3.0,
+        "sold": 3.0,
+        "wip_open": 3.0,
+        "wip_close": 3.0
+      },
+      {
+        "user": "Michael Jackson",
+        "attended": 4.0,
+        "worked": 4.0,
+        "invoiced": 4.0,
+        "uninvoiced": 4.0,
+        "idle_prod": 4.0,
+        "idle_unprod": 4.0,
+        "count": 4.0,
+        "taken": 4.0,
+        "sold": 4.0,
+        "wip_open": 4.0,
+        "wip_close": 4.0
+      }
+    ],
+    "2": [
+      {
+        "user": "Joe Smith",
+        "attended": 1.0,
+        "worked": 1.0,
+        "invoiced": 1.0,
+        "uninvoiced": 1.0,
+        "idle_prod": 1.0,
+        "idle_unprod": 1.0,
+        "count": 1.0,
+        "taken": 1.0,
+        "sold": 1.0,
+        "wip_open": 1.0,
+        "wip_close": 1.0
+      },
+      {
+        "user": "Michael Jackson",
+        "attended": 2.0,
+        "worked": 2.0,
+        "invoiced": 2.0,
+        "uninvoiced": 2.0,
+        "idle_prod": 2.0,
+        "idle_unprod": 2.0,
+        "count": 2.0,
+        "taken": 2.0,
+        "sold": 2.0,
+        "wip_open": 2.0,
+        "wip_close": 2.0
+      }
+    ]
+  }
+}

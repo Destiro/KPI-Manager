@@ -52,21 +52,47 @@ public class FileManager {
 
   /**
    * Loads data from each year into a hashmap
-   * Hashmap values: <Year, <Month, <User, Values>>>
+   * Hashmap values: <Year, <Month, <Week, Values>>>
    *
    * @return
    */
-  public static HashMap<Integer, HashMap<String, HashMap<String, DataFormat>>> loadData(int start_year, int end_year){
+  public static HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>>
+  loadData(int start_year, int end_year){
 
     return null;
   }
 
-  public static void LoadYear(int year){
+  public static void loadYear(int year){
 
   }
 
-  public static void SaveYear(int year){
+  /**
+   * Saves each year's data by calling saveYear and saving them individually.
+   *
+   * @param start_year
+   * @param end_year
+   * @param data
+   */
+  public static void saveData(int start_year, int end_year,
+                              HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> data){
+    for(int year=start_year; year<end_year; year++){
+      saveYear(year, data.get(year));
+    }
 
+  }
+
+  /**
+   * Writes this current years data into a file
+   *
+   * @param year
+   * @param data
+   */
+  public static void saveYear(int year, HashMap<String, HashMap<Integer, DataFormat[]>> data){
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter("data/"+year+".json"));
+      writer.write(gson.toJson(data));
+      writer.close();
+    } catch(Exception e){ System.out.println("Error saving "+year+"'s data file:"+e); }
   }
 }
 
