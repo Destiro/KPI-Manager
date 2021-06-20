@@ -5,12 +5,12 @@ package Main;
  * Storing first year to be loaded from file and targets to reach.
  */
 public class SettingsFormat {
-  String start_year;
+  Integer start_year;
   Double efficiency_target;
   Double productivity_target;
   Double recovery_target;
 
-  SettingsFormat(String start_year, Double efficiency_target,
+  SettingsFormat(Integer start_year, Double efficiency_target,
                  Double productivity_target, Double recovery_target){
     this.start_year = start_year;
     this.efficiency_target = efficiency_target;
@@ -19,7 +19,7 @@ public class SettingsFormat {
   }
 
   //Getters
-  public String getStart_year() {
+  public Integer getStart_year() {
     return start_year;
   }
 
