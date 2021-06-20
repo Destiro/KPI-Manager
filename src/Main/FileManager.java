@@ -1,12 +1,12 @@
 package Main;
 
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 /**
@@ -58,12 +58,30 @@ public class FileManager {
    */
   public static HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>>
   loadData(int start_year, int end_year){
+    HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> allYearStats = new HashMap<>();
+    for(int year=start_year; year<end_year; year++){
+      allYearStats.put(year, loadYear(year));
+    }
 
-    return null;
+    return allYearStats;
   }
 
-  public static void loadYear(int year){
+  /**
+   * Reads this current years file and converts that to a JSON object
+   *
+   * @param year specifies file ("year.json")
+   * @return
+   */
+  public static HashMap<String, HashMap<Integer, DataFormat[]>> loadYear(int year){
+    HashMap<String, HashMap<Integer, DataFormat[]>> yearData = new HashMap<>();
+    try{
+      //Convert file to Hashmap using type token
+      Type type = new TypeToken<HashMap<String, HashMap<Integer, DataFormat[]>>>(){}.getType();
+      JsonReader reader = new JsonReader(new FileReader("data/"+year+".json"));
+      yearData = gson.fromJson(reader, type);
 
+    } catch(Exception e){ System.out.println("Error loading year: "+e); }
+    return yearData;
   }
 
   /**
