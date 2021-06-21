@@ -7,16 +7,21 @@ import java.util.HashMap;
  * Stores all their overall stats.
  */
 public class User {
-  public HashMap<Integer, HashMap<String, DataFormat[]>> yearStats;
-  public HashMap<String, DataFormat> monthAverages;
-  public DataFormat yearAverage;
 
+  //Values stored inside the files
+  public enum Months {
+    January, February, March, April, May, June, July, August, September, October, November, December
+  }
+  public enum Values {
+    attended, worked, invoiced, uninvoiced, idle_prod, idle_unprod, count, taken, sold, wip_open, wip_close
+  }
+
+  //User variables
+  public HashMap<Integer, HashMap<String, DataFormat[]>> yearStats;
   public String name;
 
   User(String name){
     this.name = name;
-    yearStats = new HashMap<>();
-    monthAverages = new HashMap<>();
   }
 
   /**
@@ -48,6 +53,7 @@ public class User {
     }
   }
 
+
   /**
    * Get a list of values for the provided month.
    *
@@ -55,23 +61,65 @@ public class User {
    * @param month of entry
    * @return a list of weekly values
    */
-  public DataFormat[] getMonthValues(int year, int month){
-    return yearStats.get(year).get(month);
+  public DataFormat[] getMonthValues(int year, String month){
+    if(yearStats.containsKey(year) && yearStats.get(year).containsKey(month)) {
+      return yearStats.get(year).get(month);
+    }
+    return null;
   }
 
   /**
-   * Tallies weekly data and creates monthly averages
+   * Tallies weekly data and creates monthly average
    * to be fetched from the global variable.
    */
-  public void setMonthlyAverages(){
-    monthAverages.clear();
-
-    for(int year : yearStats.keySet()) {
-      for(String month : yearStats.get(year).keySet()) {
-          //todo add all static variables and work out % at the end.
+  public DataFormat getMonthlyAverage(int year, String month){
+    //Iterates through and sum up all data
+    DataFormat result = null;
+    for(DataFormat entry : getMonthValues(year, month)){
+      if(result == null){
+        result = new DataFormat(entry);
+      }else{
+        result.addWeekValues(entry);
       }
     }
+
+    //Find average and return DataFormat object
+    if(result != null){ result.averageByDays(); }
+    return result;
   }
 
-  //Yearly average -> April to March so in july means april-july as year average
+  /**
+   * Get the average for the specified financial year
+   * Each financial year starts from April 1st of the previous year
+   * and ends in March 31st of the current year.
+   * (eg 2021 = April 2020 to March 2021).
+   *
+   * @param year
+   * @return
+   */
+  public DataFormat getYearlyAverage(int year){
+    DataFormat result = null;
+    for(Months monthEnum : Months.values()){
+      //Get month
+      String month = monthEnum.name();
+
+      //Decrease year when April - Dec
+      if(month.equals("April")){
+        year -= 1;
+      }
+
+      //If entry exists, find average and add it on
+      if(yearStats.containsKey(year) && yearStats.get(year).containsKey(month)) {
+        if (result == null) {
+          result = getMonthlyAverage(year, month);
+        }else{
+          result.addWeekValues(getMonthlyAverage(year, month));
+        }
+      }
+    }
+
+    //Find average and return DataFormat object
+    if(result != null){ result.averageByDays(); }
+    return result;
+  }
 }
