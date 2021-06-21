@@ -6,6 +6,7 @@ package Main;
  */
 public class DataFormat {
   String user;
+  int week_days;
   Double attended;
   Double worked;
   Double invoiced;
@@ -18,11 +19,12 @@ public class DataFormat {
   Double wip_open;
   Double wip_close;
 
-  DataFormat(String user, Double attended, Double worked, Double invoiced,
+  DataFormat(String user, int week_days, Double attended, Double worked, Double invoiced,
           Double uninvoiced, Double idle_prod, Double idle_unprod,
           Double count, Double taken, Double sold, Double wip_open,
              Double wip_close){
     this.user = user;
+    this.week_days = week_days;
     this.attended = attended;
     this.worked = worked;
     this.invoiced = invoiced;
