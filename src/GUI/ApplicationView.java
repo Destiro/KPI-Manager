@@ -15,7 +15,10 @@ public class ApplicationView {
   public HashMap<String, User> users;
   private String page = "DASHBOARD";
 
-  public ApplicationView(){
+  public ApplicationView(HashMap<String, User> users){
+    //Add users
+    this.users = users;
+
     //General Frame Construction
     window = new JFrame("KPI Manager");
     window.setSize(1280, 720);

@@ -35,4 +35,9 @@ public class DataFormat {
     this.wip_open = wip_open;
     this.wip_close = wip_close;
   }
+
+  //Getters
+  public String getUser() {
+    return user;
+  }
 }
