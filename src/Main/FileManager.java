@@ -13,13 +13,6 @@ import com.google.gson.stream.JsonReader;
  * FileManager loads and saves files.
  */
 public class FileManager {
-  //Values stored inside the files
-  public enum Month {
-    January, February, March, April, May, June, July, August, September, October, November, December
-  }
-  public enum Values {
-    attended, worked, invoiced, uninvoiced, idle_prod, idle_unprod, count, taken, sold, wip_open, wip_close
-  }
 
   private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
