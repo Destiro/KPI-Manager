@@ -52,7 +52,7 @@ public class ApplicationView {
       makeExport();
     }else if(newPage.equals("INPUT")){
       makeInput();
-    }else if(newPage.equals("INPUT")){
+    }else if(newPage.equals("DATA")){
       makeData();
     }else if(newPage.equals("SETTINGS")){
       makeSettings();
