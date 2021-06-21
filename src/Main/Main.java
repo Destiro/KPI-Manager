@@ -7,6 +7,7 @@ import java.util.HashMap;
 import GUI.ApplicationView;
 
 public class Main {
+  private FileManager fileManager;
   private ApplicationView view;
   private HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> data = new HashMap();
   private SettingsFormat settings;
@@ -20,11 +21,12 @@ public class Main {
    * Creates GUI and fetches data
    */
   private void setup(){
-    settings = FileManager.loadSettings();
+    fileManager = new FileManager();
+    settings = fileManager.loadSettings();
 
     //Load data from start to current years date
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy");
-    data = FileManager.loadData(settings.getStart_year(), Integer.parseInt(dateFormat.format(new Date())));
+    data = fileManager.loadData(settings.getStart_year(), Integer.parseInt(dateFormat.format(new Date())));
 
     //Create users and GUI
     HashMap<String, User> users = populateUsers();

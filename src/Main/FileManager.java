@@ -29,7 +29,7 @@ public class FileManager {
    *
    * @return SettingsFormat object
    */
-  public static SettingsFormat loadSettings(){
+  public SettingsFormat loadSettings(){
     SettingsFormat sf = null;
     try {
       JsonReader reader = new JsonReader(new FileReader("settings/settings.json"));
@@ -42,7 +42,7 @@ public class FileManager {
    * Saves a new settings file from a SettingsFormat object.
    * This can be invoked by updating the settings from its panel in the UI.
    */
-  public static void saveSettings(SettingsFormat sf){
+  public void saveSettings(SettingsFormat sf){
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter("settings/settings.json"));
       writer.write(gson.toJson(sf));
@@ -56,7 +56,7 @@ public class FileManager {
    *
    * @return
    */
-  public static HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>>
+  public HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>>
   loadData(int start_year, int end_year){
     HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> allYearStats = new HashMap<>();
     for(int year=start_year; year<end_year; year++){
@@ -72,7 +72,7 @@ public class FileManager {
    * @param year specifies file ("year.json")
    * @return
    */
-  public static HashMap<String, HashMap<Integer, DataFormat[]>> loadYear(int year){
+  public HashMap<String, HashMap<Integer, DataFormat[]>> loadYear(int year){
     HashMap<String, HashMap<Integer, DataFormat[]>> yearData = new HashMap<>();
     try{
       //Convert file to Hashmap using type token
@@ -91,7 +91,7 @@ public class FileManager {
    * @param end_year
    * @param data
    */
-  public static void saveData(int start_year, int end_year,
+  public void saveData(int start_year, int end_year,
                               HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> data){
     for(int year=start_year; year<end_year; year++){
       saveYear(year, data.get(year));
@@ -105,7 +105,7 @@ public class FileManager {
    * @param year
    * @param data
    */
-  public static void saveYear(int year, HashMap<String, HashMap<Integer, DataFormat[]>> data){
+  public void saveYear(int year, HashMap<String, HashMap<Integer, DataFormat[]>> data){
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter("data/"+year+".json"));
       writer.write(gson.toJson(data));
