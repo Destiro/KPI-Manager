@@ -52,6 +52,8 @@ public class ApplicationView {
       makeExport();
     }else if(newPage.equals("INPUT")){
       makeInput();
+    }else if(newPage.equals("INPUT")){
+      makeData();
     }else if(newPage.equals("SETTINGS")){
       makeSettings();
     }else if(newPage.equals("HELP")){
@@ -77,6 +79,11 @@ public class ApplicationView {
 
   private void makeInput() {
     mainPanel = new InputPanel(new Dimension((1280*5)/6, 720), this);
+    window.add(mainPanel);
+  }
+
+  private void makeData() {
+    mainPanel = new DataPanel(new Dimension((1280*5)/6, 720), this);
     window.add(mainPanel);
   }
 
