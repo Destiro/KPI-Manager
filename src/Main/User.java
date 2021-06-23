@@ -22,6 +22,7 @@ public class User {
 
   User(String name){
     this.name = name;
+    yearStats = new HashMap<>();
   }
 
   /**

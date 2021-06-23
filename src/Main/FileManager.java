@@ -52,7 +52,7 @@ public class FileManager {
   public HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>>
   loadData(int start_year, int end_year){
     HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> allYearStats = new HashMap<>();
-    for(int year=start_year; year<end_year; year++){
+    for(int year=start_year; year<=end_year; year++){
       allYearStats.put(year, loadYear(year));
     }
 
