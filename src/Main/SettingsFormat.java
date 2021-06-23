@@ -10,8 +10,8 @@ public class SettingsFormat {
   Double productivity_target;
   Double recovery_target;
 
-  SettingsFormat(Integer start_year, Double efficiency_target,
-                 Double productivity_target, Double recovery_target){
+  public SettingsFormat(Integer start_year, Double efficiency_target,
+                        Double productivity_target, Double recovery_target){
     this.start_year = start_year;
     this.efficiency_target = efficiency_target;
     this.productivity_target = productivity_target;

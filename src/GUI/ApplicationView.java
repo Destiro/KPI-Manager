@@ -1,5 +1,7 @@
 package GUI;
 
+import Main.Main;
+import Main.SettingsFormat;
 import Main.User;
 
 import java.awt.*;
@@ -14,10 +16,14 @@ public class ApplicationView {
   private String user = "Branch";
   public HashMap<String, User> users;
   private String page = "DASHBOARD";
+  public SettingsFormat settings;
+  public Main main;
 
-  public ApplicationView(HashMap<String, User> users){
+  public ApplicationView(HashMap<String, User> users, SettingsFormat sf, Main main){
     //Add users
     this.users = users;
+    this.settings = sf;
+    this.main = main;
 
     //General Frame Construction
     window = new JFrame("KPI Manager");
@@ -99,5 +105,9 @@ public class ApplicationView {
 
   public String getUser(){
     return user;
+  }
+
+  public void setSettings(SettingsFormat sf){
+    settings = sf;
   }
 }

@@ -7,20 +7,20 @@ import java.util.HashMap;
 import GUI.ApplicationView;
 
 public class Main {
-  private FileManager fileManager;
+  public FileManager fileManager;
   private ApplicationView view;
   private HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> data = new HashMap();
   private SettingsFormat settings;
 
   public static void main(String[] args){
     Main instance = new Main();
-    instance.setup();
+    instance.setup(instance);
   }
 
   /**
    * Creates GUI and fetches data
    */
-  private void setup(){
+  private void setup(Main instance){
     fileManager = new FileManager();
     settings = fileManager.loadSettings();
 
@@ -30,7 +30,7 @@ public class Main {
 
     //Create users and GUI
     HashMap<String, User> users = populateUsers();
-    view = new ApplicationView(users);
+    view = new ApplicationView(users, settings, instance);
   }
 
   /**
