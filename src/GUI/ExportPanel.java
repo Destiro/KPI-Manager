@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.*;
+import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -9,11 +10,12 @@ public class ExportPanel extends JPanel {
   private ApplicationView gui;
   private Dimension size;
   private GridBagConstraints constraints;
+  private Color backgroundColor = new Color(215,215,215);
 
   public ExportPanel(Dimension size, ApplicationView gui){
     //JPanel setup
     setBounds((1280/6), 0, size.width, size.height);
-    setBackground(Color.YELLOW);
+    setBackground(backgroundColor);
     setLayout(new GridBagLayout());
 
     //Gridbag Constraints
@@ -35,7 +37,7 @@ public class ExportPanel extends JPanel {
 
   public void setupExport(){
     //Creating Label
-    JLabel title = new JLabel("Export Report Printout");
+    JLabel title = new JLabel("  "+"Export Report Printout");
     title.setFont(title.getFont().deriveFont(24.0f));
     constraints.gridx = 0;
     constraints.gridy = 0;
@@ -46,18 +48,24 @@ public class ExportPanel extends JPanel {
     innerPanel.setLayout(new BoxLayout(innerPanel, BoxLayout.PAGE_AXIS));
     innerPanel.setBorder(new EmptyBorder(20,15,100, 15));
     innerPanel.setBounds(size.width/4, size.height/6, size.width/2, size.height/3);
-    innerPanel.setBackground(Color.RED);
+    innerPanel.setBackground(Color.WHITE);
 
     //Creating User Dropdown
-    String users[] = {"Branch", "Joe", "Bill", "Jessica"};
-    JComboBox userSelect = new JComboBox(users);
+    JComboBox userSelect = new JComboBox(gui.users.keySet().toArray());
     userSelect.setPreferredSize(new Dimension(size.width/4, size.height/16));
     userSelect.setPrototypeDisplayValue("Select User");
     innerPanel.add(userSelect);
     innerPanel.add(Box.createRigidArea(new Dimension(0, 20))); //Padding
 
+    //Creating Year Dropdown
+    JComboBox yearBox = new JComboBox(gui.main.data.keySet().toArray());
+    yearBox.setPreferredSize(new Dimension(size.width/4, size.height/16));
+    yearBox.setPrototypeDisplayValue("Select Year");
+    innerPanel.add(yearBox);
+    innerPanel.add(Box.createRigidArea(new Dimension(0, 20))); //Padding
+
     //Creating Timeframe Dropdown
-    String month[] = {"January", "February", "March", "April", "May", "June",
+    String month[] = {"Full Business Year", "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
     JComboBox timeFrame = new JComboBox(month);
     timeFrame.setPreferredSize(new Dimension(size.width/4, size.height/16));

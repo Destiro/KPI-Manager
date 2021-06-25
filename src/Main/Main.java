@@ -9,7 +9,7 @@ import GUI.ApplicationView;
 public class Main {
   public FileManager fileManager;
   private ApplicationView view;
-  private HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> data = new HashMap();
+  public HashMap<Integer, HashMap<String, HashMap<Integer, DataFormat[]>>> data = new HashMap();
   private SettingsFormat settings;
 
   public static void main(String[] args){
