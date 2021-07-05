@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.*;
-import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +10,11 @@ public class ExportPanel extends JPanel {
   private Dimension size;
   private GridBagConstraints constraints;
   private Color backgroundColor = new Color(215,215,215);
+
+  //Get data from boxes
+  public JComboBox userSelect;
+  public JComboBox yearBox;
+  public JComboBox monthBox;
 
   public ExportPanel(Dimension size, ApplicationView gui){
     //JPanel setup
@@ -51,14 +55,14 @@ public class ExportPanel extends JPanel {
     innerPanel.setBackground(Color.WHITE);
 
     //Creating User Dropdown
-    JComboBox userSelect = new JComboBox(gui.users.keySet().toArray());
+    userSelect = new JComboBox(gui.users.keySet().toArray());
     userSelect.setPreferredSize(new Dimension(size.width/4, size.height/16));
     userSelect.setPrototypeDisplayValue("Select User");
     innerPanel.add(userSelect);
     innerPanel.add(Box.createRigidArea(new Dimension(0, 20))); //Padding
 
     //Creating Year Dropdown
-    JComboBox yearBox = new JComboBox(gui.main.data.keySet().toArray());
+    yearBox = new JComboBox(gui.main.data.keySet().toArray());
     yearBox.setPreferredSize(new Dimension(size.width/4, size.height/16));
     yearBox.setPrototypeDisplayValue("Select Year");
     innerPanel.add(yearBox);
@@ -67,15 +71,16 @@ public class ExportPanel extends JPanel {
     //Creating Timeframe Dropdown
     String month[] = {"Full Business Year", "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
-    JComboBox timeFrame = new JComboBox(month);
-    timeFrame.setPreferredSize(new Dimension(size.width/4, size.height/16));
-    timeFrame.setPrototypeDisplayValue("Select Month");
-    innerPanel.add(timeFrame);
+    monthBox = new JComboBox(month);
+    monthBox.setPreferredSize(new Dimension(size.width/4, size.height/16));
+    monthBox.setPrototypeDisplayValue("Select Month");
+    innerPanel.add(monthBox);
     innerPanel.add(Box.createRigidArea(new Dimension(0, 80))); //Padding
 
     //Creating export button
     JButton exportButton = new JButton("Export");
     exportButton.setPreferredSize(new Dimension(size.width/4, size.height/16));
+    exportButton.addActionListener(actionEvent -> saveCSV());
     innerPanel.add(exportButton);
 
     constraints.gridwidth = 1;
@@ -85,5 +90,9 @@ public class ExportPanel extends JPanel {
     constraints.anchor = GridBagConstraints.CENTER;
     constraints.fill = GridBagConstraints.NONE;
     add(innerPanel, constraints);
+  }
+
+  public void saveCSV(){
+    
   }
 }
